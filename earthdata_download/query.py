@@ -27,10 +27,11 @@ def get_data_urls(url):
     r = requests.get(url)
 
     catalogue = json.loads(r.text)
-    entries = catalogue['feed']['entry']
-
-    if not entries:
-        raise ValueError('Url \'{}\' did not return any results.'.format(url))
+    try:
+        entries = catalogue['feed']['entry']
+    except KeyError:
+        raise ValueError('Query with url \'{}\' did not return any files. '
+                'Catalogue:\n\n{}'.format(url, catalogue.__repr__()))
 
     data_urls = [e['links'][0]['href'] for e in entries]
 
