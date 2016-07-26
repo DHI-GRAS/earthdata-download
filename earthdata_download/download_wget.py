@@ -5,14 +5,14 @@ import logging
 
 wget_exe = os.path.join(os.path.dirname(__file__), 'wget64.exe')
 
-def download_data(url, username='Jessen5678', password='Drought2016', logger=None):
+def download_data(url, download_dir='.', username='Jessen5678', password='Drought2016', logger=None):
     """Download a url with login using wget"""
 
     if logger is None:
         logger = logging.getLogger('wget')
         logger.setLevel(logging.DEBUG)
 
-    cmd = [wget_exe, '-L', '--user='+username, '--password='+password, url]
+    cmd = [wget_exe, '-L', '--user='+username, '--password='+password, '-P', download_dir, url]
 
     logger.debug('Download command is \'{}\'.'.format(' '.join(cmd)))
 
@@ -35,4 +35,4 @@ def download_data(url, username='Jessen5678', password='Drought2016', logger=Non
                 pass
         if 'ERROR' in line:
             # fail on errors
-            raise RuntimeError(line.rstrip())
+            raise RuntimeError('Download of {} failed: {}'.format(url, line.rstrip()))
