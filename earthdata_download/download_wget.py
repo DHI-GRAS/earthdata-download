@@ -1,21 +1,30 @@
 import os
+import posixpath
 import subprocess
 import re
 import logging
 
 wget_exe = os.path.join(os.path.dirname(__file__), 'wget64.exe')
 
-def download_data(url, download_dir='.', username='Jessen5678', password='Drought2016', logger=None):
+def download_data(url, username, password, download_dir='.', local_filename='',
+        logger=None):
     """Download a url with login using wget"""
 
     if logger is None:
-        logger = logging.getLogger('wget')
-        logger.setLevel(logging.DEBUG)
+        logger = logging
 
-    cmd = [wget_exe, '-L', '--user='+username, '--password='+password, '-P', download_dir, url]
+    # generate local file name
+    if not local_filename:
+        local_filename = os.path.join(download_dir, posixpath.basename(url))
+
+    # put together command
+    cmd = [wget_exe, '-L', '--user='+username, '--password='+password]
+    cmd += ['-O', local_filename]
+    cmd += [url]
 
     logger.debug('Download command is \'{}\'.'.format(' '.join(cmd)))
 
+    # execute command
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     n = 0
     last_percent = ''
@@ -36,3 +45,5 @@ def download_data(url, download_dir='.', username='Jessen5678', password='Drough
         if 'ERROR' in line:
             # fail on errors
             raise RuntimeError('Download of {} failed: {}'.format(url, line.rstrip()))
+
+    return local_filename
