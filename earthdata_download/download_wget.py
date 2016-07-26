@@ -18,7 +18,8 @@ def download_data(url, username, password, download_dir='.', local_filename='',
         local_filename = os.path.join(download_dir, posixpath.basename(url))
 
     # put together command
-    cmd = [wget_exe, '-L', '--user='+username, '--password='+password]
+    cmd = [wget_exe, '-L', '-c', '-N']
+    cmd += ['--user='+username, '--password='+password]
     cmd += ['-O', local_filename]
     cmd += [url]
 
