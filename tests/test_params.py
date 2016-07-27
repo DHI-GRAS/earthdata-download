@@ -8,4 +8,3 @@ query_kw = dict(
        )
 
 auth = ('Jessen5678', 'Drought2016')
-#auth = ('josl', 'ejoHDl$5AI!n')
