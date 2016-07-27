@@ -26,7 +26,7 @@ def download_data(url, username, password, download_dir='.', local_filename='',
     logger.debug('Download command is \'{}\'.'.format(' '.join(cmd)))
 
     # execute command
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE)
     n = 0
     last_percent = ''
     for line in iter(proc.stdout.readline, ''):
