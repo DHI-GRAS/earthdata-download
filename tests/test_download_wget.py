@@ -15,8 +15,8 @@ class DownloadTests(unittest.TestCase):
 
         url = query.url_from_query(**query_kw)
         data_urls = query.get_data_urls(url)
+        local_filename = download_data(data_urls[0], username=auth[0], password=auth[1])
         try:
-            local_filename = download_data(data_urls[0], username=auth[0], password=auth[1])
             self.assertTrue(os.path.isfile(local_filename))
         finally:
             # clean up
