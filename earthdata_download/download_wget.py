@@ -25,8 +25,16 @@ def download_data(url, username, password, download_dir='.', local_filename='',
 
     logger.debug('Download command is \'{}\'.'.format(' '.join(cmd)))
 
+    # on windows, suppress wget window
+    startupinfo = None
+    if os.name == 'nt':
+        startupinfo = subprocess.STARTUPINFO()
+        startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW
+
     # execute command
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE)
+    proc = subprocess.Popen(cmd,
+            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE,
+            startupinfo=startupinfo)
     n = 0
     last_percent = ''
     for line in iter(proc.stdout.readline, ''):
