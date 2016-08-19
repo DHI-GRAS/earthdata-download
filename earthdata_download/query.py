@@ -4,7 +4,20 @@ import requests
 nasa_echo_url_base = 'https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?page_num=1'
 
 def url_from_query(short_name='', version='', date_range=(), extent={}):
+    """Generate EarthData query url for given parameters
 
+    Parameters
+    ----------
+    short_name : str
+        product short name
+    version : str
+        product version (e.g. '005', leading zeros matter!)
+    date_range : (datetime.datetime, datetime.datetime)
+        date range
+    extent : dict
+        extent dictionary
+        must have entries xmin, xmax, ymin, ymax
+    """
     url = nasa_echo_url_base
 
     # currently the API only allows for 2000 files at a time
