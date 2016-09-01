@@ -39,7 +39,13 @@ def url_from_query(short_name='', version='', date_range=(), extent={}):
 
 
 def get_data_urls(url):
+    """Get data urls from query url
 
+    Parameters
+    ----------
+    url : str
+        REST query url
+    """
     r = requests.get(url)
 
     catalogue = json.loads(r.text)
@@ -52,4 +58,3 @@ def get_data_urls(url):
     data_urls = [e['links'][0]['href'] for e in entries]
 
     return data_urls
-

@@ -11,7 +11,13 @@ def download_data(url, username, password, download_dir='.', local_filename='',
     """Download a url with login using wget"""
 
     if logger is None:
-        logger = logging
+        logger = logging.getLogger('earthdata_download')
+        logger.setLevel(logging.DEBUG)
+        ch = logging.StreamHandler()
+        ch.setLevel(logging.DEBUG)
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        ch.setFormatter(formatter)
+        logger.addHandler(ch)
 
     # generate local file name
     if not local_filename:
