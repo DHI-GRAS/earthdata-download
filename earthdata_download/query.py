@@ -30,7 +30,7 @@ def url_from_query(short_name='', version='', date_range=(), extent={}, n_produc
     url = nasa_echo_url_base
 
     if n_products > max_n_products:
-        raise ValueError('Currently, the API only allows for 2000 products at a time')
+        raise ValueError('Currently, the API only allows for {} products at a time'.format(max_n_products))
     url += '&page_size={}'.format(n_products)
 
     if short_name:
@@ -135,6 +135,9 @@ def find_data(short_name='', version='', start_date=None, end_date=None, extent=
                 short_name=short_name, version=version,
                 date_range=date_range, extent=extent,
                 n_products=max_n_products)
+
+        print(date_range)
+        print(url)
 
         try:
             entries = get_entries_from_url(url)
