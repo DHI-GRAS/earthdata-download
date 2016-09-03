@@ -30,10 +30,13 @@ class EarthdataAPI:
                 local_filename=local_filename)
         return lf
 
-    def download_all(self, download_dir='.', username=None, password=None):
-        """Download all data in data_urls"""
+    def download_all(self, download_dir='.',
+            username=None, password=None,
+            data_urls=None):
+        """Download all data in (self.)data_urls"""
         local_filenames = []
-        for url in self.data_urls:
+        data_urls = data_urls or self.data_urls
+        for url in data_urls:
             lf = self.download_single(url,
                     username, password,
                     download_dir=download_dir)
