@@ -3,7 +3,7 @@ from . import download
 
 class EarthdataAPI:
 
-    def __init__(self, username, password):
+    def __init__(self, username=None, password=None):
         self.data_urls = []
         self.username = username
         self.password = password
