@@ -1,31 +1,23 @@
 import unittest
-import tempfile
-import shutil
-import os.path
 
 from earthdata_download import EarthdataAPI
+from earthdata_download.query import max_n_products
 
-from test_params import api_query_kw, auth
+from test_params import api_query_kw, api_query_kw_more_than_max
 
 
 class TestAPI(unittest.TestCase):
 
     def test_api_init(self):
-        EarthdataAPI(username=auth[0], password=auth[1])
+        EarthdataAPI()
 
     def test_find_data(self):
-        api = EarthdataAPI(username=auth[0], password=auth[1])
+        api = EarthdataAPI()
         data_urls = api.find_data(**api_query_kw)
         print(data_urls)
         self.assertTrue(len(data_urls) > 0)
 
-    def test_download_single(self):
-        api = EarthdataAPI(username=auth[0], password=auth[1])
-        data_urls = api.find_data(**api_query_kw)
-        tempdir = tempfile.mkdtemp()
-        try:
-            local_filename = api.download_single(data_urls[0], download_dir=tempdir)
-            self.assertTrue(os.path.isfile(local_filename))
-        finally:
-            shutil.rmtree(tempdir)
-
+    def test_find_more_than_max(self):
+        api = EarthdataAPI()
+        data_urls = api.find_data(**api_query_kw_more_than_max)
+        self.assertTrue(len(data_urls) > max_n_products)
