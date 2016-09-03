@@ -20,4 +20,6 @@ class TestAPI(unittest.TestCase):
     def test_find_more_than_max(self):
         api = EarthdataAPI()
         data_urls = api.find_data(**api_query_kw_more_than_max)
-        self.assertTrue(len(data_urls) > max_n_products)
+        n_urls = len(data_urls)
+        print('Number of retrieved urls: {}'.format(n_urls))
+        self.assertTrue(n_urls > max_n_products)
