@@ -2,16 +2,15 @@ import unittest
 import os
 import logging
 
-from earthdata_download.download_wget import download_data
-from earthdata_download import query
+from earthdata_download import download_data, query
 
 from test_params import query_kw, auth
 
 logging.basicConfig(level=logging.DEBUG)
 
-class DownloadTests(unittest.TestCase):
+class DownloadTest(unittest.TestCase):
 
-    def test_download_wget(self):
+    def test_download(self):
 
         url = query.url_from_query(**query_kw)
         data_urls = query.get_data_urls(url)
