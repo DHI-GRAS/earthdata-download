@@ -69,7 +69,8 @@ def get_entries_from_url(url):
 
 
 def get_data_urls_from_entries(entries):
-    return [e['links'][0]['href'] for e in entries]
+    all_href = [e['links'][0]['href'] for e in entries]
+    return [url for url in all_href if not url.endswith('.jpg')]
 
 
 def get_data_urls(url):
