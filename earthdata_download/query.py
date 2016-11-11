@@ -136,10 +136,6 @@ def find_data(short_name='', version='', start_date=None, end_date=None, extent=
                 short_name=short_name, version=version,
                 date_range=date_range, extent=extent,
                 n_products=max_n_products)
-
-        print(date_range)
-        print(url)
-
         try:
             entries = get_entries_from_url(url)
         except ValueError:
