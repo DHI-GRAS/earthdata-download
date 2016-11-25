@@ -1,6 +1,9 @@
 from . import query
 from . import download
 
+class NoDataError(Exception):
+    pass
+
 class EarthdataAPI:
 
     def __init__(self, username=None, password=None):
@@ -15,7 +18,7 @@ class EarthdataAPI:
                 start_date=start_date, end_date=end_date,
                 extent=extent)
         if not data_urls:
-            raise RuntimeError('No data found for this ')
+            raise NoDataError('No data found for this query.')
         self.data_urls += data_urls
         return data_urls
 
