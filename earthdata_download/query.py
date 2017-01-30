@@ -1,6 +1,10 @@
-import datetime
 import json
+import logging
+import datetime
+
 import requests
+
+logger = logging.getLogger('earthdata_download.query')
 
 nasa_echo_url_base = 'https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?page_num=1'
 
@@ -136,6 +140,7 @@ def find_data(short_name='', version='', start_date=None, end_date=None, extent=
                 short_name=short_name, version=version,
                 date_range=date_range, extent=extent,
                 n_products=max_n_products)
+        logger.debug('Query URL is \'{}\'.'.format(url))
         try:
             entries = get_entries_from_url(url)
         except ValueError:

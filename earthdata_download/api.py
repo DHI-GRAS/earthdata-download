@@ -1,8 +1,10 @@
 from . import query
 from . import download
 
+
 class NoDataError(Exception):
     pass
+
 
 class EarthdataAPI:
 
