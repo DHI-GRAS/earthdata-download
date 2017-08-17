@@ -1,30 +1,39 @@
-import unittest
 import tempfile
 import shutil
 import os.path
+import warnings
+
+import pytest
 
 from earthdata_download import EarthdataAPI
 
 from test_params import api_query_kw, auth
 
 
-class TestAPI(unittest.TestCase):
+def test_api_init():
+    EarthdataAPI(**auth)
 
-    def test_api_init(self):
-        EarthdataAPI(username=auth[0], password=auth[1])
 
-    def test_find_data(self):
-        api = EarthdataAPI(username=auth[0], password=auth[1])
-        data_urls = api.find_data(**api_query_kw)
-        print(data_urls)
-        self.assertTrue(len(data_urls) > 0)
+def test_find_data():
+    api = EarthdataAPI(**auth)
+    data_urls = api.find_data(**api_query_kw)
+    print(data_urls)
+    assert (len(data_urls) > 0)
 
-    def test_download_single(self):
-        api = EarthdataAPI(username=auth[0], password=auth[1])
-        data_urls = api.find_data(**api_query_kw)
-        tempdir = tempfile.mkdtemp()
+
+@pytest.mark.skipif(
+        (auth['username'] is None or auth['password'] is None),
+        reason='invalid or missing authentication')
+def test_download_single():
+    api = EarthdataAPI(**auth)
+    data_urls = api.find_data(**api_query_kw)
+    tempdir = tempfile.mkdtemp()
+    try:
+        local_filename = api.download_single(data_urls[0], download_dir=tempdir)
+        assert (os.path.isfile(local_filename))
+    finally:
         try:
-            local_filename = api.download_single(data_urls[0], download_dir=tempdir)
-            self.assertTrue(os.path.isfile(local_filename))
-        finally:
             shutil.rmtree(tempdir)
+        except OSError:
+            warnings.warn('Unable to remove tempdir \'{}\'.'.format(tempdir))
+            pass

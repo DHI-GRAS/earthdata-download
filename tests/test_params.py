@@ -1,4 +1,5 @@
 import datetime
+import os
 
 start_date = datetime.datetime(2016, 1, 1)
 end_date = datetime.datetime(2016, 3, 31)
@@ -21,6 +22,8 @@ api_query_kw_more_than_max = dict(
         short_name='MOD11A2',
         version='005',
         start_date=datetime.datetime(2016, 1, 1),
-        end_date=datetime.datetime(2016, 12, 31))
+        end_date=datetime.datetime(2016, 8, 31))
 
-auth = ('Jessen5678', 'Drought2016')
+auth = dict(
+        username=os.environ.get('EARTHDATA_USERNAME'),
+        password=os.environ.get('EARTHDATA_PASSWORD'))
