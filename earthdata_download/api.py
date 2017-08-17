@@ -24,26 +24,20 @@ class EarthdataAPI:
         self.data_urls += data_urls
         return data_urls
 
-    def download_single(self, url, download_dir='.', local_filename=None,
-            username=None, password=None):
+    def download_single(self, url, download_dir='.', local_filename=None):
         """Download single data file from url"""
-        username = username or self.username
-        password = password or self.password
         lf = download.download_data(url,
-                username, password,
+                self.username, self.password,
                 download_dir=download_dir,
                 local_filename=local_filename)
         return lf
 
     def download_all(self, download_dir='.',
-            username=None, password=None,
             data_urls=None):
         """Download all data in (self.)data_urls"""
         local_filenames = []
         data_urls = data_urls or self.data_urls
         for url in data_urls:
-            lf = self.download_single(url,
-                    username, password,
-                    download_dir=download_dir)
+            lf = self.download_single(url, download_dir=download_dir)
             local_filenames.apend(lf)
         return local_filenames
