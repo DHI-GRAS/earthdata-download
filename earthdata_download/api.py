@@ -9,7 +9,6 @@ class NoDataError(Exception):
 class EarthdataAPI:
 
     def __init__(self, username=None, password=None):
-        self.data_urls = []
         self.username = username
         self.password = password
 
@@ -21,7 +20,6 @@ class EarthdataAPI:
                 extent=extent)
         if not data_urls:
             raise NoDataError('No data found for this query.')
-        self.data_urls += data_urls
         return data_urls
 
     def download_single(self, url, download_dir='.', local_filename=None):
@@ -32,12 +30,10 @@ class EarthdataAPI:
                 local_filename=local_filename)
         return lf
 
-    def download_all(self, download_dir='.',
-            data_urls=None):
+    def download_all(self, data_urls, download_dir='.'):
         """Download all data in (self.)data_urls"""
         local_filenames = []
-        data_urls = data_urls or self.data_urls
         for url in data_urls:
             lf = self.download_single(url, download_dir=download_dir)
-            local_filenames.apend(lf)
+            local_filenames.append(lf)
         return local_filenames
