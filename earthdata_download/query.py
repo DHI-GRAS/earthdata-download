@@ -4,13 +4,13 @@ import datetime
 
 import requests
 
-logger = logging.getLogger('earthdata_download.query')
+logger = logging.getLogger(__name__)
 
-nasa_echo_url_base = 'https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?page_num=1'
-max_n_products = 2000
+NASA_ECHO_URL_BASE = 'https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?page_num=1'
+MAX_N_PRODUCTS = 2000
 
 
-def url_from_query(short_name='', version='', date_range=(), extent={}, n_products=max_n_products):
+def url_from_query(short_name='', version='', date_range=(), extent={}, n_products=MAX_N_PRODUCTS):
     """Generate EarthData query url for given parameters
 
     Parameters
@@ -24,19 +24,19 @@ def url_from_query(short_name='', version='', date_range=(), extent={}, n_produc
     extent : dict
         extent dictionary
         must have entries xmin, xmax, ymin, ymax
-    n_products : int (max max_n_products)
+    n_products : int (max MAX_N_PRODUCTS)
         number of products to retrieve
 
     Details
     -------
     https://wiki.earthdata.nasa.gov/display/echo/ECHO+REST+Search+Guide
     """
-    url = nasa_echo_url_base
+    url = NASA_ECHO_URL_BASE
 
-    if n_products > max_n_products:
+    if n_products > MAX_N_PRODUCTS:
         raise ValueError(
                 'Currently, the API only allows for {} products at a time'
-                ''.format(max_n_products))
+                ''.format(MAX_N_PRODUCTS))
     url += '&page_size={}'.format(n_products)
 
     if short_name:
@@ -157,8 +157,8 @@ def find_data(short_name='', version='', start_date=None, end_date=None, extent=
         url = url_from_query(
                 short_name=short_name, version=version,
                 date_range=date_range, extent=extent,
-                n_products=max_n_products)
-        logger.debug('Query URL is \'{}\'.'.format(url))
+                n_products=MAX_N_PRODUCTS)
+        logger.debug('Query URL is \'%s\'.', url)
         try:
             entries = get_entries_from_url(url)
         except ValueError:
@@ -167,7 +167,7 @@ def find_data(short_name='', version='', start_date=None, end_date=None, extent=
         data_urls += get_data_urls_from_entries(entries, linkno=linkno)
 
         # check if there is more
-        if len(entries) < max_n_products:
+        if len(entries) < MAX_N_PRODUCTS:
             # nope
             break
 
