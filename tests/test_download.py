@@ -33,5 +33,5 @@ def test_download():
         try:
             shutil.rmtree(tempdir)
         except OSError:
-            warnings.warn('Unable to remove tempdir \'{}\'.'.format(tempdir))
+            warnings.warn('Unable to remove tempdir \'%s\'.', tempdir)
             pass
