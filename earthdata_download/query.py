@@ -84,8 +84,6 @@ def get_data_urls_from_entries(entries, linkno=0):
         entries from JSON response
     linkno : int
         number of link to get
-        0: HDF over ftp
-        1: HDF over https
     """
     all_href = [e['links'][linkno]['href'] for e in entries]
     return [url for url in all_href if not url.endswith('.jpg')]
@@ -135,8 +133,9 @@ def find_data(short_name='', version='', start_date=None, end_date=None, extent=
         must have entries xmin, xmax, ymin, ymax
     linkno : int
         number of link to get
-        0: HDF over ftp
-        1: HDF over https
+        different products have different links
+        e.g. opendap etc.
+        0 is usually a good download link
     """
     if start_date is None:
         # retrieve first avaliable product date

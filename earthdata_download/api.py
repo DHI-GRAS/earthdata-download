@@ -12,12 +12,38 @@ class EarthdataAPI:
         self.username = username
         self.password = password
 
-    def find_data(self, short_name='', version='', start_date=None, end_date=None, extent={}):
-        """Find data for query"""
+    def find_data(
+            self, short_name='', version='',
+            start_date=None, end_date=None, extent={}, linkno=0):
+        """Find data for query
+
+        Parameters
+        ----------
+        short_name : str
+            product short name
+        version : str
+            product version (e.g. '005', leading zeros matter!)
+        date_range : (datetime.datetime, datetime.datetime)
+            date range
+            at least one must be specified
+        extent : dict
+            extent dictionary
+            must have entries xmin, xmax, ymin, ymax
+        linkno : int
+            number of link to get
+            different products have different links
+            e.g. opendap etc.
+            0 is usually a good download link
+
+        Returns
+        -------
+        urls : list of str
+            data download URLs
+        """
         data_urls = query.find_data(
                 short_name=short_name, version=version,
                 start_date=start_date, end_date=end_date,
-                extent=extent)
+                extent=extent, linkno=linkno)
         if not data_urls:
             raise NoDataError('No data found for this query.')
         return data_urls
