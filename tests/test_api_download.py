@@ -7,7 +7,7 @@ import pytest
 
 from earthdata_download import EarthdataAPI
 
-from test_params import api_query_kw, auth
+from .test_params import api_query_kw, auth
 
 
 def test_api_init():
