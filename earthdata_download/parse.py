@@ -1,8 +1,5 @@
 import copy
 
-import shapely.geometry
-import dateutil.parser
-
 
 def _get_entry_urls(e):
     links = e['links']
@@ -10,6 +7,7 @@ def _get_entry_urls(e):
 
 
 def _parse_polygons(e):
+    import shapely.geometry
     pstr = e['polygons'][0]
     cc = [float(s) for s in pstr.split(' ')]
     cpairs = zip(cc[:-1:2], cc[1::2])
@@ -17,6 +15,7 @@ def _parse_polygons(e):
 
 
 def _parse_boxes(e):
+    import shapely.geometry
     pstr = e['boxes'][0]
     cc = [float(s) for s in pstr.split(' ')]
     ymin, xmin, ymax, xmax = cc
@@ -59,9 +58,11 @@ def get_data_urls_from_entries(entries, linkno=0):
 
 def get_entry_start_date(e):
     """Returns start date for entry"""
+    import dateutil.parser
     return dateutil.parser.parse(e['time_start'])
 
 
 def get_entry_end_date(e):
     """Returns end date for entry"""
+    import dateutil.parser
     return dateutil.parser.parse(e['time_end'])
