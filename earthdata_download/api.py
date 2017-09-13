@@ -1,5 +1,5 @@
-from . import query
-from . import download
+from earthdata_download import query
+from earthdata_download import download
 
 
 class NoDataError(Exception):
