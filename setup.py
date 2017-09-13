@@ -8,4 +8,4 @@ setup(
     author_email='josl@dhi-gras.com',
     url='https://www.dhi-gras.com',
     packages=find_packages(),
-    install_requires=['requests'])
+    install_requires=['requests', 'tqdm'])
