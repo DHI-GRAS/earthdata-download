@@ -7,6 +7,13 @@ from contextlib import closing
 import requests
 from tqdm import tqdm
 
+try:
+    import requests_ftp
+    HAS_FTP = True
+except ImportError:
+    HAS_FTP = False
+
+
 logger = logging.getLogger(__name__)
 
 SERVER_CONTINUING = False
@@ -16,6 +23,7 @@ def _download_url(
         url, username, password,
         local_filename=None, download_dir='.',
         headers={}, skip_existing=False,
+        s=None,
         server_supports_continuing=SERVER_CONTINUING):
     """Download a URL in chunks of 1 MB using requests
 
@@ -34,13 +42,22 @@ def _download_url(
         request headers
     skip_existing : bool
         always skip existing files
+    s : requests.Session, optional
+        session to re-use
     server_supports_continuing : bool
         whether the server is expected to
         support continuing partial
         downloads
     """
-    auth = requests.auth.HTTPBasicAuth(
-            username=username, password=password)
+    if s is None:
+        if url.lower.startswith('ftp:'):
+            if not HAS_FTP:
+                raise RuntimeError(
+                        'Download from FTP requires `requests-ftp` to be installed.')
+            s = requests.FTPSession()
+        else:
+            s = requests.Session()
+        s.auth = (username, password)
 
     path = local_filename
     if not path:
@@ -66,7 +83,7 @@ def _download_url(
             unit_scale=True,
             initial=already_downloaded_bytes)
 
-    with closing(requests.get(url, stream=True, auth=auth, headers=headers)) as r, \
+    with closing(s.get(url, stream=True, headers=headers)) as r, \
             closing(tqdm(**tqdm_kw)) as progress:
         chunk_size = 2 ** 20  # download in 1 MB chunks
         mode = 'wb'
