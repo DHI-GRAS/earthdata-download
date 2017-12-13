@@ -5,10 +5,10 @@ python:
 before_install:
   - pip install -U pip
 install:
-  - pip install pytest-cov
+  - pip install pytest codecov
   - pip install -r requirements_full.txt
   - pip install -e .[test]
-script: 
-  - py.test --cov=./ -v
-after_success: 
+script:
+  - coverage run --source=earthdata_download -m py.test -v
+after_success:
   - codecov
