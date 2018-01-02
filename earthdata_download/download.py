@@ -72,7 +72,7 @@ def _download_file_https(url, target, username, password):
     with EarthdataSession(username=username, password=password) as session:
         with session.get(url, stream=True) as response:
             response.raise_for_status()
-            response.raw.decompress_content = True
+            response.raw.decode_content = True
             with open(target_temp, "wb") as target_file:
                 shutil.copyfileobj(response.raw, target_file)
     shutil.move(target_temp, target)
