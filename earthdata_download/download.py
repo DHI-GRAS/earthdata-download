@@ -70,8 +70,7 @@ def data_url_from_entry(entry):
 def _download_file_https(url, target, username, password):
     target_temp = target + '.incomplete'
     with EarthdataSession(username=username, password=password) as session:
-        login_response = session.get(url)
-        with session.get(login_response.url, stream=True) as response:
+        with session.get(url, stream=True) as response:
             response.raise_for_status()
             response.raw.decompress_content = True
             with open(target_temp, "wb") as target_file:
