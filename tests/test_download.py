@@ -18,3 +18,4 @@ def test_download(query_kw, earthdata_credentials, tmpdir):
         download_dir=tempdir,
         **earthdata_credentials)
     assert os.path.isfile(local_filename)
+    assert os.path.getsize(local_filename) > 1e6
