@@ -93,6 +93,15 @@ def download_url(
     skip_existing : bool
         assume existing files are complete
         and skip
+
+    Returns
+    -------
+    str
+        path to downloaded file
+
+    Notes
+    -----
+    See also https://wiki.earthdata.nasa.gov/display/EL/How+To+Access+Data+With+Python
     """
     logger.debug('Downloading %s', url)
     credentials = dict(username=username, password=password)
@@ -111,6 +120,19 @@ def download_url(
 
 
 def download_entry(entry, **kwargs):
-    """Determine data URL from entry and download"""
+    """Determine data URL from entry and download
+
+    Parameters
+    ----------
+    entry : dict
+        product entry
+    **kwargs : additional keyword arguments
+        passed to download_url
+
+    Returns
+    -------
+    str
+        path to downloaded file
+    """
     url = data_url_from_entry(entry)
     return download_url(url, **kwargs)
