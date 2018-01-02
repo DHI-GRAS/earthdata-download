@@ -21,6 +21,29 @@ EXTENSIONS = ['.hdf', '.zip', '.nc4', '.nc']
 SCHEMES = ['https', 'http', 'ftp']
 
 
+class EarthdataSession(requests.Session):
+
+    AUTH_HOST = 'urs.earthdata.nasa.gov'
+
+    def __init__(self, username, password):
+        """Create Earthdata Session that preserves headers when redirecting"""
+        super().__init__()
+        self.auth = (username, password)
+
+    def rebuild_auth(self, prepared_request, response):
+        """Keep headers upon redirect as long as we are on self.AUTH_HOST"""
+        headers = prepared_request.headers
+        url = prepared_request.url
+        if 'Authorization' in headers:
+            original_parsed = requests.utils.urlparse(response.request.url)
+            redirect_parsed = requests.utils.urlparse(url)
+            if (
+                    original_parsed.hostname != redirect_parsed.hostname and
+                    redirect_parsed.hostname != self.AUTH_HOST and
+                    original_parsed.hostname != self.AUTH_HOST):
+                del headers['Authorization']
+
+
 def find_data_url(urls, extensions=EXTENSIONS, no_opendap=True):
     """Find URL that starts with https and ends with a data file extension"""
     urls_schemes = {}
@@ -46,8 +69,7 @@ def data_url_from_entry(entry):
 
 def _download_file_https(url, target, username, password):
     target_temp = target + '.incomplete'
-    with requests.Session() as session:
-        session.auth = (username, password)
+    with EarthdataSession(username=username, password=password) as session:
         login_response = session.get(url)
         with session.get(login_response.url, stream=True) as response:
             response.raise_for_status()
