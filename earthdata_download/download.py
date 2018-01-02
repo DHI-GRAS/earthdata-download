@@ -27,7 +27,7 @@ class EarthdataSession(requests.Session):
 
     def __init__(self, username, password):
         """Create Earthdata Session that preserves headers when redirecting"""
-        super().__init__()
+        super(EarthdataSession, self).__init__()  # Python 2 and 3
         self.auth = (username, password)
 
     def rebuild_auth(self, prepared_request, response):
