@@ -1,19 +1,18 @@
-from earthdata_download import EarthdataAPI
+from earthdata_download.api import EarthdataAPI
 from earthdata_download.query import MAX_N_PRODUCTS
 
 
-def test_api_init():
+def test_api_init_blank():
     EarthdataAPI()
 
 
-def test_find_data(api_query_kw):
+def test_query(api_query_kw):
     api = EarthdataAPI()
-    data_urls = api.find_data(**api_query_kw)
-    assert len(data_urls) > 0
+    entries = api.query(**api_query_kw)
+    assert len(entries) > 0
 
 
-def test_find_more_than_max(api_query_kw_more_than_max):
+def test_query_more_than_max(api_query_kw_more_than_max):
     api = EarthdataAPI()
-    data_urls = api.find_data(**api_query_kw_more_than_max)
-    n_urls = len(data_urls)
-    assert n_urls > MAX_N_PRODUCTS
+    entries = api.query(**api_query_kw_more_than_max)
+    assert len(entries) > MAX_N_PRODUCTS

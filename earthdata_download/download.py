@@ -1,90 +1,104 @@
 import os
 import shutil
-import posixpath
 import logging
-from contextlib import closing
+import posixpath
 
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    # Python 2
+    from urlparse import urlparse
+
+import ftputil
+import ftputil.error
 import requests
-from tqdm import tqdm
+
+from earthdata_download import parse
 
 logger = logging.getLogger(__name__)
 
-SERVER_CONTINUING = False
+EXTENSIONS = ['.hdf', '.zip', '.nc4', '.nc']
+SCHEMES = ['https', 'http', 'ftp']
 
 
-def _download_url(
-        url, username, password,
-        local_filename=None, download_dir='.',
-        headers={}, skip_existing=False,
-        server_supports_continuing=SERVER_CONTINUING):
-    """Download a URL in chunks of 1 MB using requests
+class EarthdataSession(requests.Session):
 
-    Parameters
-    ----------
-    url : str
-        URL to download
-    username, password : str
-        credentials
-    local_filename : str, optional
-        use instead of download_dir
-    download_dir : str, optional
-        directory to download to
-        file name will be server-side file name
-    headers : dict
-        request headers
-    skip_existing : bool
-        always skip existing files
-    server_supports_continuing : bool
-        whether the server is expected to
-        support continuing partial
-        downloads
-    """
-    auth = requests.auth.HTTPBasicAuth(
-            username=username, password=password)
+    AUTH_HOST = 'urs.earthdata.nasa.gov'
 
-    path = local_filename
-    if not path:
-        path = os.path.join(download_dir, posixpath.basename(url))
-    path_temp = path + '.incomplete'
+    def __init__(self, username, password):
+        """Create Earthdata Session that preserves headers when redirecting"""
+        super(EarthdataSession, self).__init__()  # Python 2 and 3
+        self.auth = (username, password)
 
-    headers = headers.copy()
-    continuing = os.path.exists(path)
-
-    if continuing and skip_existing:
-        return path
-
-    if continuing and server_supports_continuing:
-        already_downloaded_bytes = os.path.getsize(path)
-        headers.update(
-                {'Range': 'bytes={}-'.format(already_downloaded_bytes)})
-    else:
-        already_downloaded_bytes = 0
-
-    tqdm_kw = dict(
-            desc="Downloading",
-            unit="B",
-            unit_scale=True,
-            initial=already_downloaded_bytes)
-
-    with closing(requests.get(url, stream=True, auth=auth, headers=headers)) as r, \
-            closing(tqdm(**tqdm_kw)) as progress:
-        chunk_size = 2 ** 20  # download in 1 MB chunks
-        mode = 'wb'
-        downloaded_bytes = 0
-        with open(path_temp, mode) as f:
-            for chunk in r.iter_content(chunk_size=chunk_size):
-                if chunk:  # filter out keep-alive new chunks
-                    f.write(chunk)
-                    progress.update(len(chunk))
-                    downloaded_bytes += len(chunk)
-    shutil.move(path_temp, path)
-    return path
+    def rebuild_auth(self, prepared_request, response):
+        """Keep headers upon redirect as long as we are on self.AUTH_HOST"""
+        headers = prepared_request.headers
+        url = prepared_request.url
+        if 'Authorization' in headers:
+            original_parsed = requests.utils.urlparse(response.request.url)
+            redirect_parsed = requests.utils.urlparse(url)
+            if (
+                    original_parsed.hostname != redirect_parsed.hostname and
+                    redirect_parsed.hostname != self.AUTH_HOST and
+                    original_parsed.hostname != self.AUTH_HOST):
+                del headers['Authorization']
 
 
-def download_data(
+def find_data_url(urls, extensions=EXTENSIONS, no_opendap=True):
+    """Find URL that starts with https and ends with a data file extension"""
+    urls_schemes = {}
+    for url in urls:
+        if no_opendap and 'opendap' in url:
+            continue
+        o = urlparse(url)
+        if o.scheme in SCHEMES:
+            if posixpath.splitext(o.path)[1] in EXTENSIONS:
+                urls_schemes[o.scheme] = url
+    for scheme in SCHEMES:
+        # prefer https
+        if scheme in urls_schemes:
+            return urls_schemes[scheme]
+    raise ValueError('No HTTPS or FTP data URL found among URLs {}'.format(urls))
+
+
+def data_url_from_entry(entry):
+    """Get data URL from entry"""
+    all_urls = parse.get_entry_urls(entry)
+    return find_data_url(all_urls)
+
+
+def _download_file_https(url, target, username, password):
+    target_temp = target + '.incomplete'
+    with EarthdataSession(username=username, password=password) as session:
+        with session.get(url, stream=True) as response:
+            response.raise_for_status()
+            response.raw.decode_content = True
+            with open(target_temp, "wb") as target_file:
+                shutil.copyfileobj(response.raw, target_file)
+    shutil.move(target_temp, target)
+
+
+def _hostname_path_from_url(url):
+    o = urlparse(url)
+    return o.netloc, o.path
+
+
+def _download_file_ftp(url, target, username, password):
+    hostname, path = _hostname_path_from_url(url)
+    try:
+        with ftputil.FTPHost(hostname, username, password) as host:
+            host.download(path, target)
+    except ftputil.error.PermanentError:
+        raise ValueError(
+                'Unable to connect to this ftp server \'{}\'. '
+                'Consider downloading manually \'{}\'.'
+                .format(hostname, url))
+
+
+def download_url(
         url, username, password, download_dir='.',
-        local_filename=None, skip_existing=False, **kwargs):
-    """Download a url with login
+        local_filename=None, skip_existing=False):
+    """Download file from URL with login
 
     Parameters
     ----------
@@ -100,14 +114,46 @@ def download_data(
     skip_existing : bool
         assume existing files are complete
         and skip
-    kwargs : keyword arguments
-        passed to _download_url
+
+    Returns
+    -------
+    str
+        path to downloaded file
+
+    Notes
+    -----
+    See also https://wiki.earthdata.nasa.gov/display/EL/How+To+Access+Data+With+Python
     """
-    return _download_url(
-            url,
-            username=username,
-            password=password,
-            local_filename=local_filename,
-            download_dir=download_dir,
-            skip_existing=skip_existing,
-            **kwargs)
+    logger.debug('Downloading %s', url)
+    credentials = dict(username=username, password=password)
+
+    o = urlparse(url)
+    local_filename = os.path.join(download_dir, posixpath.basename(o.path))
+
+    if os.path.isfile(local_filename) and skip_existing:
+        pass
+    else:
+        if o.scheme == 'ftp':
+            _download_file_ftp(url, local_filename, **credentials)
+        else:
+            _download_file_https(url, local_filename, **credentials)
+    return local_filename
+
+
+def download_entry(entry, **kwargs):
+    """Determine data URL from entry and download
+
+    Parameters
+    ----------
+    entry : dict
+        product entry
+    **kwargs : additional keyword arguments
+        passed to download_url
+
+    Returns
+    -------
+    str
+        path to downloaded file
+    """
+    url = data_url_from_entry(entry)
+    return download_url(url, **kwargs)

@@ -15,22 +15,45 @@ MAX_NUM_PAGES = 100
 _TZERO = datetime.time()
 
 
-def url_from_query(
-        short_name='', version='',
-        start_date=None, end_date=None, extent={},
+def _date_logic(start_date, end_date):
+    """Get start and end dates
+
+    Defaults
+    --------
+    end_date : start_date + 1 day
+    start_date : end_date - 1 day
+
+    Returns
+    -------
+    start_date, end_date
+    """
+    if start_date is None and end_date is None:
+        return None, None
+    elif end_date is None:
+        end_date = start_date + datetime.timedelta(days=1)
+    elif start_date is None:
+        start_date = end_date - datetime.timedelta(days=1)
+    if start_date.time() == _TZERO:
+        start_date = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        end_date = end_date.replace(hour=23, minute=59, second=59)
+    return start_date, end_date
+
+
+def format_query_url(
+        short_name=None, version=None,
+        start_date=None, end_date=None, extent=None,
         n_products=MAX_N_PRODUCTS, page_num=1):
     """Generate EarthData query url for given parameters
 
     Parameters
     ----------
-    short_name : str
+    short_name : str, optional
         product short name
-    version : str
+    version : str, optional
         product version (e.g. '005', leading zeros matter!)
-    start_date, end_date : datetime.datetime
+    start_date, end_date : datetime.datetime, optional
         date range
-        can be None
-    extent : dict
+    extent : dict, optional
         extent dictionary
         must have entries xmin, xmax, ymin, ymax
     n_products : int (max MAX_N_PRODUCTS)
@@ -69,7 +92,7 @@ def url_from_query(
     return url
 
 
-def get_entries_from_url(url):
+def _get_entries_from_url(url):
     """Get entries from query url
 
     Parameters
@@ -85,7 +108,7 @@ def get_entries_from_url(url):
         return []
 
 
-def find_data_entries(
+def get_entries(
         short_name='', version='',
         start_date=None, end_date=None,
         extent={}, parse_entries=False):
@@ -110,7 +133,7 @@ def find_data_entries(
     # iterate until the full query period has been retrieved
     entries = []
     for page_num in range(1, MAX_NUM_PAGES + 1):
-        url = url_from_query(
+        url = format_query_url(
                 short_name=short_name, version=version,
                 start_date=start_date,
                 end_date=end_date,
@@ -118,7 +141,7 @@ def find_data_entries(
                 n_products=MAX_N_PRODUCTS,
                 page_num=page_num)
         logger.debug('Query URL is \'%s\'.', url)
-        new_entries = get_entries_from_url(url)
+        new_entries = _get_entries_from_url(url)
         logger.debug('Query returned %d entries.', len(entries))
         if not new_entries:
             # no entries found
@@ -131,63 +154,6 @@ def find_data_entries(
             break
 
     if parse_entries:
-        entries = [parse.parse_entry(e) for e in entries]
-
-    return entries
-
-
-def find_data(
-        short_name='', version='',
-        start_date=None, end_date=None,
-        extent={}, linkno=0):
-    """Query EarthData for products and return download urls
-
-    Parameters
-    ----------
-    short_name : str
-        product short name
-    version : str
-        product version (e.g. '005', leading zeros matter!)
-    start_date, end_date : datetime.datetime
-        date range
-        can be None
-    extent : dict
-        extent dictionary
-        must have entries xmin, xmax, ymin, ymax
-    linkno : int
-        number of link to get
-        different products have different links
-        e.g. opendap etc.
-        0 is usually a good download link
-    """
-    entries = find_data_entries(
-            short_name,
-            version,
-            start_date=start_date,
-            end_date=end_date)
-    data_urls = parse.get_data_urls_from_entries(entries, linkno=0)
-    return data_urls
-
-
-def _date_logic(start_date, end_date):
-    """Get start and end dates
-
-    Defaults
-    --------
-    end_date : start_date + 1 day
-    start_date : end_date - 1 day
-
-    Returns
-    -------
-    start_date, end_date
-    """
-    if start_date is None and end_date is None:
-        return None, None
-    elif end_date is None:
-        end_date = start_date + datetime.timedelta(days=1)
-    elif start_date is None:
-        start_date = end_date - datetime.timedelta(days=1)
-    if start_date.time() == _TZERO:
-        start_date = start_date.replace(hour=0, minute=0, second=0, microsecond=0)
-        end_date = end_date.replace(hour=23, minute=59, second=59)
-    return start_date, end_date
+        return [parse.parse_entry(e) for e in entries]
+    else:
+        return entries
