@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 def test_download(query_kw, earthdata_credentials, tmpdir):
     entries = query.find_data_entries(**query_kw)
     data_urls = parse.get_data_urls_from_entries(entries, linkno=0)
-    tempdir = tmpdir.mkdir('download')
+    tempdir = str(tmpdir.mkdir('download'))
 
     local_filename = download_data(
         data_urls[0],
