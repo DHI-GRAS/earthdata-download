@@ -12,9 +12,10 @@ class EarthdataAPI:
         self.username = username
         self.password = password
 
-    def find_data(
-            self, short_name='', version='',
-            start_date=None, end_date=None, extent={}, linkno=0):
+    def query(
+            self, short_name=None, version=None,
+            start_date=None, end_date=None, extent=None,
+            parse_entries=False):
         """Find data for query
 
         Parameters
@@ -29,37 +30,101 @@ class EarthdataAPI:
         extent : dict
             extent dictionary
             must have entries xmin, xmax, ymin, ymax
-        linkno : int
-            number of link to get
-            different products have different links
-            e.g. opendap etc.
-            0 is usually a good download link
+        parse_entries : bool
+            derive additional python types from entries
+            like datetime timestamps and coverage polygons
 
         Returns
         -------
-        urls : list of str
-            data download URLs
+        list of dict
+            entries
         """
-        data_urls = query.find_data(
-                short_name=short_name, version=version,
-                start_date=start_date, end_date=end_date,
-                extent=extent, linkno=linkno)
-        if not data_urls:
-            raise NoDataError('No data found for this query.')
-        return data_urls
+        entries = query.get_entries(
+            short_name=short_name, version=version,
+            start_date=start_date, end_date=end_date,
+            extent=extent, parse_entries=parse_entries)
+        if not entries:
+            raise NoDataError('Query returned no results.')
+        return entries
 
-    def download_single(self, url, download_dir='.', local_filename=None):
-        """Download single data file from url"""
-        lf = download.download_data(url,
-                self.username, self.password,
-                download_dir=download_dir,
-                local_filename=local_filename)
+    @staticmethod
+    def get_data_url(entry):
+        """Get data URL from entry
+
+        Parameters
+        ----------
+        entry : dict
+            entry from query
+
+        Returns
+        -------
+        str
+            URL
+        """
+        return download.data_url_from_entry(entry)
+
+    @staticmethod
+    def get_data_urls(entries):
+        """Get data URLs from entries
+
+        Parameters
+        ----------
+        entries : list of dict
+            entry dictionaries
+
+        Returns
+        -------
+        list of str
+            data URLs
+        """
+        return [download.data_url_from_entry(e) for e in entries]
+
+    def download_single(self, product, download_dir='.', local_filename=None):
+        """Download single data file
+
+        Parameters
+        ----------
+        product : str or dict
+            data URL or entry dictionary
+        download_dir : str, optional
+            directory to download to
+        local_filename : str, optional
+            direct path to target file
+            alternative to download_dir
+
+        Returns
+        -------
+        str
+            path to downloaded file
+        """
+        if isinstance(product, dict):
+            url = self.get_data_url(product)
+        else:
+            url = product
+        lf = download.download_url(
+            url,
+            username=self.username, password=self.password,
+            download_dir=download_dir,
+            local_filename=local_filename)
         return lf
 
-    def download_all(self, data_urls, download_dir='.'):
-        """Download all data in (self.)data_urls"""
+    def download(self, products, download_dir='.'):
+        """Download multiple products
+
+        Parameters
+        ----------
+        products : list of str or list of dict
+            URLs or entries
+        download_dir : str
+            directory to download to
+
+        Returns
+        -------
+        list of str
+            paths to downloaded files
+        """
         local_filenames = []
-        for url in data_urls:
-            lf = self.download_single(url, download_dir=download_dir)
+        for product in products:
+            lf = self.download_single(products, download_dir=download_dir)
             local_filenames.append(lf)
         return local_filenames
