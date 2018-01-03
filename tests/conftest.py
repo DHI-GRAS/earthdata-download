@@ -43,7 +43,7 @@ def api_query_kw_more_than_max():
         short_name='MOD11A2',
         version='005',
         start_date=datetime.datetime(2016, 1, 1),
-        end_date=datetime.datetime(2016, 3, 30))
+        end_date=datetime.datetime(2016, 2, 28))
 
 
 @pytest.fixture

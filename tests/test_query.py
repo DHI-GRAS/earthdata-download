@@ -31,3 +31,10 @@ def test_get_entries_parse(query_kw):
     entries = query.get_entries(parse_entries=True, **query_kw)
     assert len(entries) > 0
     assert 'start_date' in entries[0]
+
+
+@my_vcr.use_cassette
+@pytest.mark.nasa
+def test_get_entries_more_than_max(api_query_kw_more_than_max):
+    entries = query.get_entries(**api_query_kw_more_than_max)
+    assert len(entries) > query.MAX_N_PRODUCTS
