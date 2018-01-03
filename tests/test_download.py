@@ -5,10 +5,7 @@ import pytest
 from earthdata_download import query
 from earthdata_download import download
 
-from .shared import my_vcr
 
-
-@my_vcr.use_cassette
 @pytest.mark.nasa
 def test_download(query_kw, earthdata_credentials, tmpdir):
     tempdir = str(tmpdir)
