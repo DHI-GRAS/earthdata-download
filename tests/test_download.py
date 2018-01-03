@@ -1,14 +1,17 @@
 import os
-import logging
+
+import pytest
 
 from earthdata_download import query
 from earthdata_download import download
 
-logging.basicConfig(level=logging.DEBUG)
+from .shared import my_vcr
 
 
+@my_vcr.use_cassette
+@pytest.mark.nasa
 def test_download(query_kw, earthdata_credentials, tmpdir):
-    tempdir = str(tmpdir.mkdir('download'))
+    tempdir = str(tmpdir)
     entries = query.get_entries(**query_kw)
     local_filename = download.download_entry(
         entries[0],
