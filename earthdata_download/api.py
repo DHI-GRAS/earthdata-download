@@ -79,7 +79,8 @@ class EarthdataAPI:
         """
         return [download.data_url_from_entry(e) for e in entries]
 
-    def download_single(self, product, download_dir='.', local_filename=None):
+    def download_single(self, product, download_dir='.',
+                        local_filename=None, skip_existing=True):
         """Download single data file
 
         Parameters
@@ -91,6 +92,9 @@ class EarthdataAPI:
         local_filename : str, optional
             direct path to target file
             alternative to download_dir
+        skip_existing : bool
+            consier existing files complete
+            and do not redownload
 
         Returns
         -------
@@ -105,10 +109,11 @@ class EarthdataAPI:
             url,
             username=self.username, password=self.password,
             download_dir=download_dir,
-            local_filename=local_filename)
+            local_filename=local_filename,
+            skip_existing=skip_existing)
         return lf
 
-    def download(self, products, download_dir='.'):
+    def download(self, products, download_dir='.', skip_existing=True):
         """Download multiple products
 
         Parameters
@@ -117,6 +122,9 @@ class EarthdataAPI:
             URLs or entries
         download_dir : str
             directory to download to
+        skip_existing : bool
+            consier existing files complete
+            and do not redownload
 
         Returns
         -------
@@ -125,6 +133,7 @@ class EarthdataAPI:
         """
         local_filenames = []
         for product in products:
-            lf = self.download_single(products, download_dir=download_dir)
+            lf = self.download_single(
+                products, download_dir=download_dir, skip_existing=skip_existing)
             local_filenames.append(lf)
         return local_filenames
