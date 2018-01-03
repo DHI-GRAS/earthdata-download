@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='earthdata_download',
-    version='0.8',
+    version='0.9',
     description='NASA EarthData download interface',
     author='Jonas Solvsteen',
     author_email='josl@dhigroup.com',
@@ -12,5 +12,4 @@ setup(
     extras_require={
         'test': [
             'pytest',
-            'requests-mock',
             'vcrpy']})
