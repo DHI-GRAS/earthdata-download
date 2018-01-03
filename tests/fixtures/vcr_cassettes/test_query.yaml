@@ -1,0 +1,590 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?page_num=1&page_size=2000&short_name=MOD13C1&version=005&temporal[]=2016-01-01T00:00:00,2016-03-31T23:59:59&bounding_box=30,-10,40,0
+  response:
+    body: {string: "{\n  \"feed\" : {\n    \"updated\" : \"2018-01-03T09:13:25.632Z\"\
+        ,\n    \"id\" : \"https://cmr.earthdata.nasa.gov:443/search/granules.json?short_name=MOD13C1&version=005&temporal[]=2016-01-01T00%3A00%3A00%2C2016-03-31T23%3A59%3A59&bounding_box=30%2C-10%2C40%2C0\"\
+        ,\n    \"title\" : \"ECHO granule metadata\",\n    \"entry\" : [ {\n     \
+        \ \"time_start\" : \"2015-12-19T00:00:00.000Z\",\n      \"boxes\" : [ \"-90\
+        \ -180 90 180\" ],\n      \"granule_size\" : \"81.1865\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1048144578-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-01-03T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"1.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2015.12.19/MOD13C1.A2015353.005.2016008005704.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2015.12.19/MOD13C1.A2015353.005.2016008005704.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.08/BROWSE.MOD13C1.A2015353.005.2016008005704.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.08/BROWSE.MOD13C1.A2015353.005.2016008005704.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2015.12.19/MOD13C1.A2015353.005.2016008005704.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2205907447\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:10.820Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2015353.005.2016008005704.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-01-01T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"83.9267\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1048378660-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-01-16T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.01/MOD13C1.A2016001.005.2016018073858.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.01.01/MOD13C1.A2016001.005.2016018073858.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.18/BROWSE.MOD13C1.A2016001.005.2016018073858.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.18/BROWSE.MOD13C1.A2016001.005.2016018073858.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.01/MOD13C1.A2016001.005.2016018073858.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2206362333\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:08.841Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016001.005.2016018073858.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-01-17T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"90.2831\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1221978172-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-02-01T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.17/MOD13C1.A2016017.005.2016035162546.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.01.17/MOD13C1.A2016017.005.2016035162546.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.04/BROWSE.MOD13C1.A2016017.005.2016035162546.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.04/BROWSE.MOD13C1.A2016017.005.2016035162546.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.17/MOD13C1.A2016017.005.2016035162546.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2210208528\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:15.321Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016017.005.2016035162546.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-02-02T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"96.1379\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1224744505-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-02-17T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.02/MOD13C1.A2016033.005.2016050074613.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.02.02/MOD13C1.A2016033.005.2016050074613.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.19/BROWSE.MOD13C1.A2016033.005.2016050074613.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.19/BROWSE.MOD13C1.A2016033.005.2016050074613.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.02/MOD13C1.A2016033.005.2016050074613.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2213234037\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:12.522Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016033.005.2016050074613.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-02-18T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"93.6832\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1234769921-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-03-04T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"9.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.18/MOD13C1.A2016049.005.2016106132629.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.02.18/MOD13C1.A2016049.005.2016106132629.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.15/BROWSE.MOD13C1.A2016049.005.2016106132629.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.15/BROWSE.MOD13C1.A2016049.005.2016106132629.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.18/MOD13C1.A2016049.005.2016106132629.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2218969259\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:16.269Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016049.005.2016106132629.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-03-05T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"101.105\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1234579872-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-03-20T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.05/MOD13C1.A2016065.005.2016105164802.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.03.05/MOD13C1.A2016065.005.2016105164802.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016065.005.2016105164802.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016065.005.2016105164802.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.05/MOD13C1.A2016065.005.2016105164802.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2218709995\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:13.953Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016065.005.2016105164802.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-03-21T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"100.597\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1234581268-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-04-05T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.21/MOD13C1.A2016081.005.2016105165525.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.03.21/MOD13C1.A2016081.005.2016105165525.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016081.005.2016105165525.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016081.005.2016105165525.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.21/MOD13C1.A2016081.005.2016105165525.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2218710444\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:08.916Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016081.005.2016105165525.hdf\"\n    } ]\n  }\n}"}
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Length: ['24134']
+      Content-Type: [application/json; charset=utf-8]
+      ETag: ['"28f6aec2f3c4653bcbe6ff056db720b0"']
+      Echo-Cursor-At-End: ['true']
+      Echo-Hits: ['7']
+      Echo-Hits-Estimated: ['false']
+      Server: [nginx]
+      Strict-Transport-Security: [max-age=31536000;, max-age=31536000; includeSubDomains;]
+      X-Rack-Cache: [miss]
+      X-Request-Id: [a18995206e8fc00d6c3ecb710fb695d7]
+      X-Runtime: ['0.401000']
+      X-UA-Compatible: ['IE=Edge,chrome=1']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?page_num=1&page_size=2000&short_name=MOD13C1&version=005&temporal[]=2016-01-01T00:00:00,2016-03-31T23:59:59&bounding_box=30,-10,40,0
+  response:
+    body: {string: "{\n  \"feed\" : {\n    \"updated\" : \"2018-01-03T09:50:18.332Z\"\
+        ,\n    \"id\" : \"https://cmr.earthdata.nasa.gov:443/search/granules.json?short_name=MOD13C1&version=005&temporal[]=2016-01-01T00%3A00%3A00%2C2016-03-31T23%3A59%3A59&bounding_box=30%2C-10%2C40%2C0\"\
+        ,\n    \"title\" : \"ECHO granule metadata\",\n    \"entry\" : [ {\n     \
+        \ \"time_start\" : \"2015-12-19T00:00:00.000Z\",\n      \"boxes\" : [ \"-90\
+        \ -180 90 180\" ],\n      \"granule_size\" : \"81.1865\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1048144578-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-01-03T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"1.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2015.12.19/MOD13C1.A2015353.005.2016008005704.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2015.12.19/MOD13C1.A2015353.005.2016008005704.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.08/BROWSE.MOD13C1.A2015353.005.2016008005704.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.08/BROWSE.MOD13C1.A2015353.005.2016008005704.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2015.12.19/MOD13C1.A2015353.005.2016008005704.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2205907447\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:10.820Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2015353.005.2016008005704.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-01-01T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"83.9267\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1048378660-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-01-16T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.01/MOD13C1.A2016001.005.2016018073858.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.01.01/MOD13C1.A2016001.005.2016018073858.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.18/BROWSE.MOD13C1.A2016001.005.2016018073858.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.01.18/BROWSE.MOD13C1.A2016001.005.2016018073858.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.01/MOD13C1.A2016001.005.2016018073858.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2206362333\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:08.841Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016001.005.2016018073858.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-01-17T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"90.2831\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1221978172-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-02-01T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.17/MOD13C1.A2016017.005.2016035162546.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.01.17/MOD13C1.A2016017.005.2016035162546.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.04/BROWSE.MOD13C1.A2016017.005.2016035162546.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.04/BROWSE.MOD13C1.A2016017.005.2016035162546.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.01.17/MOD13C1.A2016017.005.2016035162546.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2210208528\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:15.321Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016017.005.2016035162546.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-02-02T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"96.1379\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1224744505-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-02-17T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.02/MOD13C1.A2016033.005.2016050074613.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.02.02/MOD13C1.A2016033.005.2016050074613.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.19/BROWSE.MOD13C1.A2016033.005.2016050074613.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.02.19/BROWSE.MOD13C1.A2016033.005.2016050074613.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.02/MOD13C1.A2016033.005.2016050074613.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2213234037\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:12.522Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016033.005.2016050074613.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-02-18T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"93.6832\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1234769921-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-03-04T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"9.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.18/MOD13C1.A2016049.005.2016106132629.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.02.18/MOD13C1.A2016049.005.2016106132629.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.15/BROWSE.MOD13C1.A2016049.005.2016106132629.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.15/BROWSE.MOD13C1.A2016049.005.2016106132629.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.02.18/MOD13C1.A2016049.005.2016106132629.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2218969259\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:16.269Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016049.005.2016106132629.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-03-05T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"101.105\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1234579872-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-03-20T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.05/MOD13C1.A2016065.005.2016105164802.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.03.05/MOD13C1.A2016065.005.2016105164802.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016065.005.2016105164802.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016065.005.2016105164802.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.05/MOD13C1.A2016065.005.2016105164802.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2218709995\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:13.953Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016065.005.2016105164802.hdf\"\n    }, {\n      \"time_start\"\
+        \ : \"2016-03-21T00:00:00.000Z\",\n      \"boxes\" : [ \"-90 -180 90 180\"\
+        \ ],\n      \"granule_size\" : \"100.597\",\n      \"online_access_flag\"\
+        \ : true,\n      \"id\" : \"G1234581268-LPDAAC_ECS\",\n      \"day_night_flag\"\
+        \ : \"BOTH\",\n      \"browse_flag\" : true,\n      \"time_end\" : \"2016-04-05T23:59:59.000Z\"\
+        ,\n      \"coordinate_system\" : \"CARTESIAN\",\n      \"original_format\"\
+        \ : \"ECHO10\",\n      \"data_center\" : \"LPDAAC_ECS\",\n      \"cloud_cover\"\
+        \ : \"2.0\",\n      \"links\" : [ {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"hreflang\" : \"\
+        en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.21/MOD13C1.A2016081.005.2016105165525.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"application/x-hdfeos\",\n        \"title\" : \"(GET\
+        \ DATA : OPENDAP DATA (DODS))\",\n        \"hreflang\" : \"en-US\",\n    \
+        \    \"href\" : \"http://opendap.cr.usgs.gov/opendap/hyrax//MODIS_Composites/MOLT/MOD13C1.005/2016.03.21/MOD13C1.A2016081.005.2016105165525.hdf\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016081.005.2016105165525.1.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/browse#\"\
+        ,\n        \"type\" : \"image/jpeg\",\n        \"title\" : \"(BROWSE)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//WORKING/BRWS/Browse.001/2016.04.14/BROWSE.MOD13C1.A2016081.005.2016105165525.2.jpg\"\
+        \n      }, {\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"type\" : \"text/xml\",\n        \"title\" : \"(METADATA)\",\n\
+        \        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://e4ftl01.cr.usgs.gov//MODIS_Composites/MOLT/MOD13C1.005/2016.03.21/MOD13C1.A2016081.005.2016105165525.hdf.xml\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://landweb.nascom.nasa.gov/cgi-bin/QA_WWW/qaFlagPage.cgi?sat=terra&ver=C5\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/documentation#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/node/76\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/data_access/data_pool\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/data#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://earthexplorer.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"https://lpdaac.usgs.gov/\"\
+        \n      }, {\n        \"inherited\" : true,\n        \"rel\" : \"http://esipfed.org/ns/fedsearch/1.1/metadata#\"\
+        ,\n        \"hreflang\" : \"en-US\",\n        \"href\" : \"http://modis-land.gsfc.nasa.gov/\"\
+        \n      } ],\n      \"dataset_id\" : \"MODIS/Terra Vegetation Indices 16-Day\
+        \ L3 Global 0.05Deg CMG V005\",\n      \"title\" : \"SC:MOD13C1.005:2218710444\"\
+        ,\n      \"updated\" : \"2016-11-28T11:16:08.916Z\",\n      \"producer_granule_id\"\
+        \ : \"MOD13C1.A2016081.005.2016105165525.hdf\"\n    } ]\n  }\n}"}
+    headers:
+      Cache-Control: ['max-age=0, private, must-revalidate']
+      Content-Length: ['24134']
+      Content-Type: [application/json; charset=utf-8]
+      ETag: ['"2ed0f0abfb3a67b2af8855305c477a01"']
+      Echo-Cursor-At-End: ['true']
+      Echo-Hits: ['7']
+      Echo-Hits-Estimated: ['false']
+      Server: [nginx]
+      Strict-Transport-Security: [max-age=31536000;, max-age=31536000; includeSubDomains;]
+      X-Rack-Cache: [miss]
+      X-Request-Id: [f7603accdf67d8c5524563bb27acb2e9]
+      X-Runtime: ['0.386000']
+      X-UA-Compatible: ['IE=Edge,chrome=1']
+    status: {code: 200, message: OK}
+version: 1

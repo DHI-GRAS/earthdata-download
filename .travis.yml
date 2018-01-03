@@ -9,6 +9,6 @@ install:
   - pip install -r requirements_full.txt
   - pip install -e .[test]
 script:
-  - coverage run --source=earthdata_download -m py.test -v
+  - coverage run --source=earthdata_download -m pytest -v
 after_success:
   - codecov

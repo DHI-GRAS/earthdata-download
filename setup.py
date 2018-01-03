@@ -7,5 +7,10 @@ setup(
     author='Jonas Solvsteen',
     author_email='josl@dhigroup.com',
     url='https://www.dhi-gras.com',
-    packages=find_packages(),
-    install_requires=open('requirements_full.txt').read().splitlines())
+    packages=find_packages(exclude=['tests']),
+    install_requires=open('requirements_full.txt').read().splitlines(),
+    extras_require={
+        'test': [
+            'pytest',
+            'requests-mock',
+            'vcrpy']})
