@@ -142,10 +142,10 @@ def get_entries(
                 page_num=page_num)
         logger.debug('Query URL is \'%s\'.', url)
         new_entries = _get_entries_from_url(url)
-        logger.debug('Query returned %d entries.', len(entries))
         if not new_entries:
             # no entries found
             break
+        logger.debug('Query returned %d entries.', len(entries))
         entries += new_entries
 
         # check if there might be more
