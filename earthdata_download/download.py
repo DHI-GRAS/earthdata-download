@@ -23,7 +23,7 @@ SCHEMES = ['https', 'http', 'ftp']
 
 class EarthdataSession(requests.Session):
 
-    AUTH_HOST = 'urs.earthdata.nasa.gov'
+    AUTH_DOMAINS = ['nasa.gov', 'usgs.gov']
 
     def __init__(self, username, password):
         """Create Earthdata Session that preserves headers when redirecting"""
@@ -31,16 +31,18 @@ class EarthdataSession(requests.Session):
         self.auth = (username, password)
 
     def rebuild_auth(self, prepared_request, response):
-        """Keep headers upon redirect as long as we are on self.AUTH_HOST"""
+        """Keep headers upon redirect as long as we are on any of self.AUTH_DOMAINS"""
         headers = prepared_request.headers
         url = prepared_request.url
         if 'Authorization' in headers:
             original_parsed = requests.utils.urlparse(response.request.url)
             redirect_parsed = requests.utils.urlparse(url)
+            original_domain = '.'.join(original_parsed.hostname.split('.')[-2:])
+            redirect_domain = '.'.join(redirect_parsed.hostname.split('.')[-2:])
             if (
-                    original_parsed.hostname != redirect_parsed.hostname and
-                    redirect_parsed.hostname != self.AUTH_HOST and
-                    original_parsed.hostname != self.AUTH_HOST):
+                    original_domain != redirect_domain and
+                    redirect_domain not in self.AUTH_DOMAINS and
+                    original_domain not in self.AUTH_DOMAINS):
                 del headers['Authorization']
 
 
