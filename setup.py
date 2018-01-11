@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='earthdata_download',
-    version='0.13',
+    version='0.14',
     description='NASA EarthData download interface',
     author='Jonas Solvsteen',
     author_email='josl@dhigroup.com',
