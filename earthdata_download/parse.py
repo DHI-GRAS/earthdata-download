@@ -1,5 +1,3 @@
-import copy
-
 
 def get_entry_urls(e):
     return [link['href'] for link in e['links']]
@@ -61,8 +59,7 @@ def get_entry_end_date(e):
 
 def parse_entry(e):
     """Parse entry from CMR JSON response"""
-    d = {}
-    d['original_response'] = copy.deepcopy(e)
+    d = e.copy()
     d['urls'] = get_entry_urls(e)
     d['start_date'] = get_entry_start_date(e)
     d['end_date'] = get_entry_end_date(e)
