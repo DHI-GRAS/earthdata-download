@@ -101,10 +101,10 @@ class EarthdataAPI:
         str
             path to downloaded file
         """
-        if isinstance(product, dict):
-            url = self.get_data_url(product)
-        else:
+        if isinstance(product, str):
             url = product
+        else:
+            url = self.get_data_url(product)
         lf = download.download_url(
             url,
             username=self.username, password=self.password,
@@ -134,6 +134,6 @@ class EarthdataAPI:
         local_filenames = []
         for product in products:
             lf = self.download_single(
-                products, download_dir=download_dir, skip_existing=skip_existing)
+                product, download_dir=download_dir, skip_existing=skip_existing)
             local_filenames.append(lf)
         return local_filenames
