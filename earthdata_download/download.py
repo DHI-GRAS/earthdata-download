@@ -51,8 +51,8 @@ def find_data_url(urls, extensions=EXTENSIONS, no_opendap=True):
         if no_opendap and 'opendap' in url:
             continue
         o = urlparse(url)
-        if o.scheme in SCHEMES:
-            if posixpath.splitext(o.path)[1] in EXTENSIONS:
+        if o.scheme.lower() in SCHEMES:
+            if posixpath.splitext(o.path)[1].lower() in EXTENSIONS:
                 urls_schemes[o.scheme] = url
     for scheme in SCHEMES:
         # prefer https
