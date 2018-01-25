@@ -2,10 +2,6 @@ from earthdata_download import query
 from earthdata_download import download
 
 
-class NoDataError(Exception):
-    pass
-
-
 class EarthdataAPI:
 
     def __init__(self, username=None, password=None):
@@ -43,8 +39,6 @@ class EarthdataAPI:
             short_name=short_name, version=version,
             start_date=start_date, end_date=end_date,
             extent=extent, parse_entries=parse_entries)
-        if not entries:
-            raise NoDataError('Query returned no results.')
         return entries
 
     @staticmethod
