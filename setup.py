@@ -1,8 +1,10 @@
 from setuptools import setup, find_packages
+import versioneer
 
 setup(
     name='earthdata_download',
-    version='0.15',
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     description='NASA EarthData download interface',
     author='Jonas Solvsteen',
     author_email='josl@dhigroup.com',
