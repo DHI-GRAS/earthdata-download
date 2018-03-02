@@ -1,8 +1,8 @@
-# earthdata_download
+# earthdata-download
 Query and download https://earthdata.nasa.gov/
 
-[![Build Status](https://travis-ci.org/DHI-GRAS/earthdata_download.svg?branch=master)](https://travis-ci.org/DHI-GRAS/earthdata_download)
-[![codecov](https://codecov.io/gh/DHI-GRAS/earthdata_download/branch/master/graph/badge.svg)](https://codecov.io/gh/DHI-GRAS/earthdata_download)
+[![Build Status](https://travis-ci.org/DHI-GRAS/earthdata-download.svg?branch=master)](https://travis-ci.org/DHI-GRAS/earthdata-download)
+[![codecov](https://codecov.io/gh/DHI-GRAS/earthdata-download/branch/master/graph/badge.svg)](https://codecov.io/gh/DHI-GRAS/earthdata-download)
 
 
 ## NASA EARTHDATA login
