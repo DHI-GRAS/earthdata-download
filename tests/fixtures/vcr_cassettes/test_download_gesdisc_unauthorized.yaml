@@ -1,0 +1,179 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: http://disc2.gesdisc.eosdis.nasa.gov/data/TRMM_RT/TRMM_3B42RT_Daily.7/2016/12/3B42RT_Daily.20161231.7.nc4
+  response:
+    body: {string: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <html><head>
+
+        <title>301 Moved Permanently</title>
+
+        </head><body>
+
+        <h1>Moved Permanently</h1>
+
+        <p>The document has moved <a href="https://disc2.gesdisc.eosdis.nasa.gov/data/TRMM_RT/TRMM_3B42RT_Daily.7/2016/12/3B42RT_Daily.20161231.7.nc4">here</a>.</p>
+
+        </body></html>
+
+'}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Length: ['314']
+      Content-Type: [text/html; charset=iso-8859-1]
+      Keep-Alive: ['timeout=15, max=100']
+      Location: ['https://disc2.gesdisc.eosdis.nasa.gov/data/TRMM_RT/TRMM_3B42RT_Daily.7/2016/12/3B42RT_Daily.20161231.7.nc4']
+      Server: [Apache]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 301, message: Moved Permanently}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://disc2.gesdisc.eosdis.nasa.gov/data/TRMM_RT/TRMM_3B42RT_Daily.7/2016/12/3B42RT_Daily.20161231.7.nc4
+  response:
+    body: {string: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <html><head>
+
+        <title>302 Found</title>
+
+        </head><body>
+
+        <h1>Found</h1>
+
+        <p>The document has moved <a href="https://urs.earthdata.nasa.gov/oauth/authorize/?scope=uid&amp;app_type=401&amp;client_id=e2WVk8Pw6weeLUKZYOxvTQ&amp;response_type=code&amp;redirect_uri=https%3A%2F%2Fdisc2.gesdisc.eosdis.nasa.gov%2Fdata-redirect&amp;state=aHR0cHM6Ly9kaXNjMi5nZXNkaXNjLmVvc2Rpcy5uYXNhLmdvdi9kYXRhL1RSTU1fUlQvVFJNTV8zQjQyUlRfRGFpbHkuNy8yMDE2LzEyLzNCNDJSVF9EYWlseS4yMDE2MTIzMS43Lm5jNA">here</a>.</p>
+
+        </body></html>
+
+'}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Length: ['548']
+      Content-Type: [text/html; charset=iso-8859-1]
+      Keep-Alive: ['timeout=15, max=100']
+      Location: ['https://urs.earthdata.nasa.gov/oauth/authorize/?scope=uid&app_type=401&client_id=e2WVk8Pw6weeLUKZYOxvTQ&response_type=code&redirect_uri=https%3A%2F%2Fdisc2.gesdisc.eosdis.nasa.gov%2Fdata-redirect&state=aHR0cHM6Ly9kaXNjMi5nZXNkaXNjLmVvc2Rpcy5uYXNhLmdvdi9kYXRhL1RSTU1fUlQvVFJNTV8zQjQyUlRfRGFpbHkuNy8yMDE2LzEyLzNCNDJSVF9EYWlseS4yMDE2MTIzMS43Lm5jNA']
+      Server: [Apache]
+      Strict-Transport-Security: [max-age=31536000;includeSubdomains;]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 302, message: Found}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://urs.earthdata.nasa.gov/oauth/authorize/?scope=uid&app_type=401&client_id=e2WVk8Pw6weeLUKZYOxvTQ&response_type=code&redirect_uri=https%3A%2F%2Fdisc2.gesdisc.eosdis.nasa.gov%2Fdata-redirect&state=aHR0cHM6Ly9kaXNjMi5nZXNkaXNjLmVvc2Rpcy5uYXNhLmdvdi9kYXRhL1RSTU1fUlQvVFJNTV8zQjQyUlRfRGFpbHkuNy8yMDE2LzEyLzNCNDJSVF9EYWlseS4yMDE2MTIzMS43Lm5jNA
+  response:
+    body: {string: '<html><body>You are being <a href="https://disc2.gesdisc.eosdis.nasa.gov/data-redirect?error=access_denied&amp;state=aHR0cHM6Ly9kaXNjMi5nZXNkaXNjLmVvc2Rpcy5uYXNhLmdvdi9kYXRhL1RSTU1fUlQvVFJNTV8zQjQyUlRfRGFpbHkuNy8yMDE2LzEyLzNCNDJSVF9EYWlseS4yMDE2MTIzMS43Lm5jNA">redirected</a>.</body></html>'}
+    headers:
+      Access-Control-Allow-Credentials: ['true']
+      Access-Control-Allow-Methods: ['GET, POST']
+      Access-Control-Allow-Origin: ['null']
+      Access-Control-Expose-Headers: ['true']
+      Cache-Control: [no-cache]
+      Connection: [keep-alive]
+      Content-Type: [text/html; charset=utf-8]
+      Location: ['https://disc2.gesdisc.eosdis.nasa.gov/data-redirect?error=access_denied&state=aHR0cHM6Ly9kaXNjMi5nZXNkaXNjLmVvc2Rpcy5uYXNhLmdvdi9kYXRhL1RSTU1fUlQvVFJNTV8zQjQyUlRfRGFpbHkuNy8yMDE2LzEyLzNCNDJSVF9EYWlseS4yMDE2MTIzMS43Lm5jNA']
+      Server: [nginx/1.10.2]
+      Strict-Transport-Security: [max-age=31536000]
+      X-Content-Type-Options: [nosniff]
+      X-Frame-Options: [SAMEORIGIN]
+      X-Request-Id: [26d7432c-36e8-4128-b1cd-f4ee83621a81]
+      X-Runtime: ['0.179907']
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 302, message: Found}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://disc2.gesdisc.eosdis.nasa.gov/data-redirect?error=access_denied&state=aHR0cHM6Ly9kaXNjMi5nZXNkaXNjLmVvc2Rpcy5uYXNhLmdvdi9kYXRhL1RSTU1fUlQvVFJNTV8zQjQyUlRfRGFpbHkuNy8yMDE2LzEyLzNCNDJSVF9EYWlseS4yMDE2MTIzMS43Lm5jNA
+  response:
+    body: {string: '<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+        <html><head>
+
+        <title>302 Found</title>
+
+        </head><body>
+
+        <h1>Found</h1>
+
+        <p>The document has moved <a href="https://disc.gsfc.nasa.gov/earthdata-login">here</a>.</p>
+
+        </body></html>
+
+'}
+    headers:
+      Connection: [Keep-Alive]
+      Content-Length: ['226']
+      Content-Type: [text/html; charset=iso-8859-1]
+      Keep-Alive: ['timeout=15, max=99']
+      Location: ['https://disc.gsfc.nasa.gov/earthdata-login']
+      Server: [Apache]
+      Strict-Transport-Security: [max-age=31536000;includeSubdomains;]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 302, message: Found}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.18.4]
+    method: GET
+    uri: https://disc.gsfc.nasa.gov/earthdata-login
+  response:
+    body: {string: "<!DOCTYPE html><html ng-app=\"uuiApp\" ng-controller=\"metaCtrl\"
+        class=\"bg-deep-blue\"><head><base href=\"/\"><link rel=\"stylesheet\" href=\"css/vendor.css\"><link
+        rel=\"stylesheet\" href=\"css/main.css\"><title ng-if=\"datasetProvider.searchConstraints.keywords.length
+        == null\">GES DISC</title><span ng-if=\"datasetProvider.searchConstraints.keywords.length
+        != null\"><title>{{datasetProvider.searchConstraints.keywords | uppercase}}
+        Data holdings at the GES DISC</title><meta name=\"description\" content=\"{{datasetProvider.searchConstraints.keywords.join('
+        ') | uppercase}}, Unified User Interface at NASA, UUI, data, GES DISC, datasets\"></span><script
+        src=\"https://cdn.earthdata.nasa.gov/tophat2/tophat2.js\" id=\"earthdata-tophat-script\"
+        data-show-status=\"false\" data-status-api-url=\"https://status.earthdata.nasa.gov/api/v1/notifications\"
+        async=\"async\" defer=\"defer\"></script><meta name=\"fragment\" content=\"!\"><script>
+        window.prerenderReady = false; </script></head><body ng-model-options=\"{
+        timezone: 'UTC' }\" style=\"overflow-x:hidden;\"><div ui-view=\"\"></div><spinner></spinner><status-list></status-list><back-to-top
+        show-offset=\"300\" fade-offset=\"1200\"></back-to-top><script src=\"lib/MathJax/MathJax.js?config=TeX-MML-AM_CHTML\"></script><script
+        src=\"lib/ckeditor/ckeditor.js\"></script><script src=\"scripts/vendor.js\"></script><script
+        src=\"scripts/app.js\"></script><script language=\"javascript\" id=\"_fed_an_ua_tag\"
+        src=\"https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA&sub-agency=GSFC&sp=data,find,giovanni,visualize,GESDISC&dclink=true\"
+        defer=\"\">\n  </script></body></html>"}
+    headers:
+      Accept-Ranges: [bytes]
+      Cache-Control: ['public, max-age=0']
+      Connection: [close]
+      Content-Security-Policy: [upgrade-insecure-requests]
+      Content-Type: [text/html; charset=UTF-8]
+      Last-Modified: ['Fri, 02 Feb 2018 17:15:27 GMT']
+      Strict-Transport-Security: [max-age=31536000;includeSubdomains;]
+      Vary: [Accept-Encoding]
+      Via: [1.1 gs6102dsc-web2.gesdisc.eosdis.nasa.gov]
+      X-Content-Type-Options: [nosniff]
+      X-DNS-Prefetch-Control: ['off']
+      X-Download-Options: [noopen]
+      X-Frame-Options: [SAMEORIGIN, SAMEORIGIN]
+      X-XSS-Protection: [1; mode=block]
+      set-cookie: [191713918143151071611460812512=s%3AIXRXLnsWZcFS9h3u9MhOBtdfUjje5zVu.bbgQBs5i62748qWb4u1e8QuCK3mQp2vLcGMPaeollPU;
+          Path=/; HttpOnly]
+    status: {code: 200, message: OK}
+version: 1
