@@ -20,6 +20,8 @@ logger = logging.getLogger(__name__)
 EXTENSIONS = ['.hdf', '.zip', '.nc4', '.nc']
 SCHEMES = ['https', 'http', 'ftp']
 
+MIN_FILE_SIZE_BYTES = 10e3
+
 
 class EarthdataSession(requests.Session):
 
@@ -77,6 +79,11 @@ def _download_file_https(url, target, username, password):
             response.raw.decode_content = True
             with open(target_temp, "wb") as target_file:
                 shutil.copyfileobj(response.raw, target_file)
+    filesize = os.path.getsize(target_temp)
+    if filesize < MIN_FILE_SIZE_BYTES:
+        raise RuntimeError(
+            'Size of downloaded file is only {:.3f} B. Suspecting broken file ({}).'
+            .format((filesize * 1e-3), target_temp))
     shutil.move(target_temp, target)
 
 
