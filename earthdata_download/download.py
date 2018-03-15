@@ -1,6 +1,7 @@
 import os
 import shutil
 import logging
+import fnmatch
 import posixpath
 
 try:
@@ -48,16 +49,45 @@ class EarthdataSession(requests.Session):
                 del headers['Authorization']
 
 
-def find_data_url(urls, extensions=EXTENSIONS, no_opendap=True):
-    """Find URL that starts with https and ends with a data file extension"""
+def find_data_url(urls, extensions=EXTENSIONS, schemes=SCHEMES, url_match=None, no_opendap=True):
+    """Find URL that starts with https and ends with a data file extension
+
+    Parameters
+    ----------
+    urls : list of str
+        candidates for data URLs
+    extensions : list of str
+        list of possible data file extensions (lowercase)
+    schemes : list of str
+        ordered list of accepted access schemes (https, ftp, ...)
+        if several schemes were found, the first match will be preferred
+    url_match : str
+        file name match pattern for fnmatch
+    no_opendap : bool
+        skip opendap links
+
+    Returns
+    -------
+    str :
+        best candidate for data URL
+    """
     urls_schemes = {}
     for url in urls:
         if no_opendap and 'opendap' in url:
             continue
         o = urlparse(url)
-        if o.scheme.lower() in SCHEMES:
-            if posixpath.splitext(o.path)[1].lower() in EXTENSIONS:
+        if o.scheme.lower() not in schemes:
+            continue
+        # url_match overrides extensions
+        if url_match is not None:
+            if fnmatch.fnmatch(url, url_match):
                 urls_schemes[o.scheme] = url
+            continue
+        # check for extensions
+        ext = posixpath.splitext(o.path)[1].lower()
+        if ext in extensions:
+            urls_schemes[o.scheme] = url
+            continue
     for scheme in SCHEMES:
         # prefer https
         if scheme in urls_schemes:
@@ -65,10 +95,29 @@ def find_data_url(urls, extensions=EXTENSIONS, no_opendap=True):
     raise ValueError('No HTTPS or FTP data URL found among URLs {}'.format(urls))
 
 
-def data_url_from_entry(entry):
-    """Get data URL from entry"""
+def data_url_from_entry(entry, **kwargs):
+    """Get data URL from entry
+
+    Parameters
+    ----------
+    entry : dict
+        entry information
+    **kwargs : additional keyword arguments
+        passed to find_data_url
+
+    Returns
+    -------
+    str :
+        data URL
+
+    Note
+    ----
+    find_data_url is probably the most hacky part of this package.
+    If it does not work for you, use download_url with the URLs you
+    extracted from the entries.
+    """
     all_urls = parse.get_entry_urls(entry)
-    return find_data_url(all_urls)
+    return find_data_url(all_urls, **kwargs)
 
 
 def _download_file_https(url, target, username, password):
@@ -149,13 +198,15 @@ def download_url(
     return local_filename
 
 
-def download_entry(entry, **kwargs):
+def download_entry(entry, data_url_kw=None, **kwargs):
     """Determine data URL from entry and download
 
     Parameters
     ----------
     entry : dict
         product entry
+    data_url_kw : dict
+        keyword arguments passed to find_data_url
     **kwargs : additional keyword arguments
         passed to download_url
 
@@ -164,5 +215,5 @@ def download_entry(entry, **kwargs):
     str
         path to downloaded file
     """
-    url = data_url_from_entry(entry)
+    url = data_url_from_entry(entry, **(data_url_kw or {}))
     return download_url(url, **kwargs)

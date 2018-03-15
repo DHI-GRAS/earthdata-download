@@ -42,24 +42,29 @@ class EarthdataAPI:
         return entries
 
     @staticmethod
-    def get_data_url(entry):
+    def get_data_url(entry, *args, **kwargs):
         """Get data URL from entry
 
         Parameters
         ----------
         entry : dict
             entry from query
+        *args, **kwargs : additional arguments
+            passed to download.data_url_from_entry
 
         Returns
         -------
         str
             URL
-        """
-        return download.data_url_from_entry(entry)
 
-    @staticmethod
-    def get_data_urls(entries):
-        """Get data URLs from entries
+        Note
+        ----
+        Override this if it does not work for you.
+        """
+        return download.data_url_from_entry(entry, *args, **kwargs)
+
+    def get_data_urls(self, entries, *args, **kwargs):
+        """Get data URLs from entries (just a multi-element version of get_data_url)
 
         Parameters
         ----------
@@ -71,7 +76,7 @@ class EarthdataAPI:
         list of str
             data URLs
         """
-        return [download.data_url_from_entry(e) for e in entries]
+        return [self.get_data_url(e, *args, **kwargs) for e in entries]
 
     def download_single(self, product, download_dir='.',
                         local_filename=None, skip_existing=True):
