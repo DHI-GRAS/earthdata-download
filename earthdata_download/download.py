@@ -18,7 +18,7 @@ from earthdata_download import parse
 
 logger = logging.getLogger(__name__)
 
-EXTENSIONS = ['.hdf', '.zip', '.nc4', '.nc']
+EXTENSIONS = ['.hdf', '.hdf5', '.zip', '.nc4', '.nc']
 SCHEMES = ['https', 'http', 'ftp']
 
 MIN_FILE_SIZE_BYTES = 10e3
