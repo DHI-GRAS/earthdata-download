@@ -8,7 +8,7 @@ from earthdata_download import parse
 
 logger = logging.getLogger(__name__)
 
-NASA_ECHO_URL_BASE = 'https://api.echo.nasa.gov/catalog-rest/echo_catalog/granules.json?'
+NASA_ECHO_URL_BASE = 'https://cmr.earthdata.nasa.gov/catalog-rest/echo_catalog/granules.json?'
 MAX_N_PRODUCTS = 2000
 MAX_NUM_PAGES = 100
 
@@ -101,7 +101,10 @@ def _get_entries_from_url(url):
         REST query url
     """
     r = requests.get(url)
-    catalogue = json.loads(r.text)
+    try:
+        catalogue = json.loads(r.text)
+    except ValueError:
+        raise RuntimeError('API call did not return JSON: {}'.format(r.text))
     try:
         return catalogue['feed']['entry']
     except KeyError:
