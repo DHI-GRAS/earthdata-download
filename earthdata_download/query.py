@@ -8,7 +8,7 @@ from earthdata_download import parse
 
 logger = logging.getLogger(__name__)
 
-NASA_ECHO_URL_BASE = 'https://cmr.earthdata.nasa.gov/catalog-rest/echo_catalog/granules.json?'
+NASA_ECHO_URL_BASE = 'https://cmr.earthdata.nasa.gov/search/granules.json'
 MAX_N_PRODUCTS = 2000
 MAX_NUM_PAGES = 100
 
@@ -65,7 +65,7 @@ def format_query_url(
     -------
     https://wiki.earthdata.nasa.gov/display/echo/ECHO+REST+Search+Guide
     """
-    url = NASA_ECHO_URL_BASE
+    url = NASA_ECHO_URL_BASE + '?'
 
     url += 'page_num={}'.format(page_num)
 
@@ -148,13 +148,15 @@ def get_entries(
         if not new_entries:
             # no entries found
             break
-        logger.debug('Query returned %d entries.', len(entries))
+        logger.debug('Number of entries on page %d was %d', page_num, len(new_entries))
         entries += new_entries
 
         # check if there might be more
         if len(entries) < MAX_N_PRODUCTS:
             # nope
             break
+
+    logger.debug('Query returned a total of %d entries.', len(entries))
 
     if parse_entries:
         return [parse.parse_entry(e) for e in entries]
