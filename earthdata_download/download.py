@@ -18,7 +18,7 @@ from earthdata_download import parse
 
 logger = logging.getLogger(__name__)
 
-EXTENSIONS = ['.hdf', '.hdf5', '.zip', '.nc4', '.nc']
+EXTENSIONS = ['.hdf', '.hdf5', '.zip', '.nc4', '.nc', '.h5']
 SCHEMES = ['https', 'http', 'ftp']
 
 MIN_FILE_SIZE_BYTES = 10e3
@@ -198,7 +198,7 @@ def download_url(
     return local_filename
 
 
-def download_entry(entry, data_url_kw=None, **kwargs):
+def download_entry(entry, data_url_kw=None, extensions=EXTENSIONS, **kwargs):
     """Determine data URL from entry and download
 
     Parameters
@@ -207,6 +207,9 @@ def download_entry(entry, data_url_kw=None, **kwargs):
         product entry
     data_url_kw : dict
         keyword arguments passed to find_data_url
+    extensions : list of str
+        allowed data file extensions
+        for finding download link
     **kwargs : additional keyword arguments
         passed to download_url
 
@@ -215,5 +218,8 @@ def download_entry(entry, data_url_kw=None, **kwargs):
     str
         path to downloaded file
     """
-    url = data_url_from_entry(entry, **(data_url_kw or {}))
+    data_url_kw = data_url_kw or {}
+    if 'extensions' not in data_url_kw:
+        data_url_kw['extensions'] = extensions
+    url = data_url_from_entry(entry, **data_url_kw)
     return download_url(url, **kwargs)
