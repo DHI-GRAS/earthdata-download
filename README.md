@@ -33,7 +33,7 @@ results = api.query(
     short_name='ATL08', 
     version='002', 
     start_date=datetime.datetime(2018, 1, 1), 
-    end_date = datetime.datetime(2020, 1, 1), 
+    end_date=datetime.datetime(2020, 1, 1), 
     extent={
         'xmin': 33,
         'xmax': 34,
