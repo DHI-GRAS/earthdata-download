@@ -43,7 +43,7 @@ results = api.query(
 )
 ```
 
-### Query results:
+### Query results
 
 ```python
 [{'producer_granule_id': 'ATL08_20181016131403_02730114_002_01.h5',
