@@ -63,7 +63,7 @@ def format_query_url(
 
     Details
     -------
-    https://wiki.earthdata.nasa.gov/display/echo/ECHO+REST+Search+Guide
+    https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html
     """
     url = NASA_ECHO_URL_BASE + '?'
 
