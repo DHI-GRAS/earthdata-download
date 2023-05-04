@@ -121,13 +121,21 @@ def data_url_from_entry(entry, **kwargs):
 
 
 def _download_file_https(url, target, username, password):
+    def _download(s, t):
+        with s.get(url=url, stream=True) as r:        
+            r.raise_for_status()
+            r.raw.decode_content = True
+            with open(t, "wb") as t:
+                t.write(r.content)
+
     target_temp = target + '.incomplete'
-    with EarthdataSession(username=username, password=password) as session:
-        with session.get(url, stream=True) as response:
-            response.raise_for_status()
-            response.raw.decode_content = True
-            with open(target_temp, "wb") as target_file:
-                shutil.copyfileobj(response.raw, target_file)
+    with EarthdataSession(username=username, password=password) as session:  
+        try:
+            _download(session, target_temp)
+        except requests.HTTPError:
+            session.headers.update({'User-Agent': 'Mozilla/5.0'})
+            _download(session, target_temp)
+
     filesize = os.path.getsize(target_temp)
     if filesize < MIN_FILE_SIZE_BYTES:
         raise RuntimeError(
