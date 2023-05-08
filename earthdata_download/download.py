@@ -121,20 +121,20 @@ def data_url_from_entry(entry, **kwargs):
 
 
 def _download_file_https(url, target, username, password):
-    def _download(s, t):
+    def _download(s, t, user_agent=False):
         with s.get(url=url, stream=True) as r:        
             r.raise_for_status()
             r.raw.decode_content = True
             with open(t, "wb") as t:
-                t.write(r.content)
-
+                shutil.copyfileobj(r.raw, t) if not user_agent else t.write(r.content)
+                
     target_temp = target + '.incomplete'
     with EarthdataSession(username=username, password=password) as session:  
         try:
             _download(session, target_temp)
         except requests.HTTPError:
             session.headers.update({'User-Agent': 'Mozilla/5.0'})
-            _download(session, target_temp)
+            _download(session, target_temp, user_agent=True)
 
     filesize = os.path.getsize(target_temp)
     if filesize < MIN_FILE_SIZE_BYTES:
