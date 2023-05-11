@@ -28,10 +28,14 @@ class EarthdataSession(requests.Session):
 
     AUTH_DOMAINS = ['nasa.gov', 'usgs.gov']
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, user_agent=None):
         """Create Earthdata Session that preserves headers when redirecting"""
         super(EarthdataSession, self).__init__()  # Python 2 and 3
         self.auth = (username, password)
+
+        if user_agent is not None: 
+            self.headers.update({'User-Agent': user_agent})
+        self.DefaultUserAgent = user_agent is None
 
     def rebuild_auth(self, prepared_request, response):
         """Keep headers upon redirect as long as we are on any of self.AUTH_DOMAINS"""
@@ -121,20 +125,13 @@ def data_url_from_entry(entry, **kwargs):
 
 
 def _download_file_https(url, target, username, password):
-    def _download(s, t, user_agent=False):
-        with s.get(url=url, stream=True) as r:        
+    target_temp = target + '.incomplete'
+    with EarthdataSession(username=username, password=password) as session: 
+        with session.get(url=url, stream=True) as r:        
             r.raise_for_status()
             r.raw.decode_content = True
-            with open(t, "wb") as t:
-                shutil.copyfileobj(r.raw, t) if not user_agent else t.write(r.content)
-                
-    target_temp = target + '.incomplete'
-    with EarthdataSession(username=username, password=password) as session:  
-        try:
-            _download(session, target_temp)
-        except requests.HTTPError:
-            session.headers.update({'User-Agent': 'Mozilla/5.0'})
-            _download(session, target_temp, user_agent=True)
+            with open(target_temp, "wb") as t:
+                shutil.copyfileobj(r.raw, target_temp) if not session.DefaultUserAgent else t.write(r.content)
 
     filesize = os.path.getsize(target_temp)
     if filesize < MIN_FILE_SIZE_BYTES:
