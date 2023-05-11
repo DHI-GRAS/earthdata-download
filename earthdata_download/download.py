@@ -131,7 +131,10 @@ def _download_file_https(url, target, username, password):
             r.raise_for_status()
             r.raw.decode_content = True
             with open(target_temp, "wb") as t:
-                shutil.copyfileobj(r.raw, target_temp) if not session.DefaultUserAgent else t.write(r.content)
+                if session.DefaultUserAgent:
+                    t.write(r.content)
+                else:
+                    shutil.copyfileobj(r.raw, target_temp) 
 
     filesize = os.path.getsize(target_temp)
     if filesize < MIN_FILE_SIZE_BYTES:
