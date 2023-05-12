@@ -35,7 +35,7 @@ class EarthdataSession(requests.Session):
 
         if user_agent is not None: 
             self.headers.update({'User-Agent': user_agent})
-        self.DefaultUserAgent = user_agent is None
+        self.defaultuseragent = user_agent is None
 
     def rebuild_auth(self, prepared_request, response):
         """Keep headers upon redirect as long as we are on any of self.AUTH_DOMAINS"""
@@ -127,15 +127,14 @@ def data_url_from_entry(entry, **kwargs):
 def _download_file_https(url, target, username, password):
     target_temp = target + '.incomplete'
     with EarthdataSession(username=username, password=password) as session: 
-        with session.get(url=url, stream=True) as r:        
-            r.raise_for_status()
-            r.raw.decode_content = True
-            with open(target_temp, "wb") as t:
-                if session.DefaultUserAgent:
-                    t.write(r.content)
+        with session.get(url=url, stream=True) as response:        
+            response.raise_for_status()
+            response.raw.decode_content = True
+            with open(target_temp, "wb") as target_file:
+                if session.defaultuseragent:
+                    shutil.copyfileobj(response.raw, target_temp)                     
                 else:
-                    shutil.copyfileobj(r.raw, target_temp) 
-
+                    target_file.write(response.content)
     filesize = os.path.getsize(target_temp)
     if filesize < MIN_FILE_SIZE_BYTES:
         raise RuntimeError(
